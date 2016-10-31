@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!-- <link rel="stylesheet"
+  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" -->>
+		<title>计算器</title>
+		<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
+</script>
+		<style type="text/css">
+			button{
+				background-color: rgb(217, 217, 217);
+				text-align: center;
+				font-size: 28px;
+				width: 80px;
+				height: 80px;
+				padding: 1px;
+				margin: 1px;
+				border: 1px;
+				/*border-style: solid;*/
+			}
+			.function{
+				background-color: rgb(243,127, 38);
+				text-align: center;
+				font-size: 28px;
+				color: white;
+				padding: 1px;
+				margin: 1px;
+				border: 1px;
+				width: 80px;
+				height: 80px;
+			}
+
+		.CalculatorContainer{
+			display: block;
+			margin-top: 2px;
+		}
+
+		#displayNumber{
+			font-size: 40px;
+		}
+
+		/*div*/
+		.displayScreen{
+			background-color: rgba(100, 100, 100, 0.1);
+			margin: 5px;
+			width: 338px;
+			height: 100px;
+		}
+		/*p*/
+		#displayNumber{
+			text-align: right;
+			padding-right: 10px;
+			height: 100px;
+			line-height: 100px;
+
+		}
+
+		body{
+			margin: 0;
+			padding: 0;
+		}
+		</style>
+
+	</head>
+	<body>
+
+	<div class="container"></div>
+
+	<div class="displayScreen">
+		<p id="displayNumber">0</p>
+	</div>
+
+			<div style="margin:5px">
+				<div class="CalculatorContainer">
+					<button type='button' id="functionAC" class="number">AC</button>
+					<button id="functionAddOfSub" class="number">+/-</button>
+					<button id="functionYu" class="number">%</button>
+					<button id="functionDiv" class="function">÷</button>
+				</div>
+				<div class="CalculatorContainer">
+								<button id="number7" class="number">7</button>
+								<button id="number8" class="number">8</button>
+								<button id="number9" class="number">9</button>
+								<button id="functionMul" class="function">x</button>
+
+				</div>
+				<div class="CalculatorContainer">
+
+					<button id="number4" class="number">4</button>
+					<button id="number5" class="number">5</button>
+					<button id="number6" class="number">6</button>
+					<button id="functionSub" class="function">-</button>
+				</div>
+				<div class="CalculatorContainer">
+					<button id="number1" class="number">1</button>
+					<button id="number2" class="number">2</button>
+					<button id="number3" class="number">3</button>
+					<button id="functionAdd" class="function">+</button>
+
+				</div>
+
+				<div class="CalculatorContainer">
+					<button id="number0" class="number" style="width:166px">0</button>
+					<button id="number." class="number">.</button>
+					<button id="functionRes" class="function">=</button>
+				</div>
+
+			</div>
+		<script>
+
+			$("button").click(function(){
+
+				var str = $(this).attr('class').toString();
+				// alert(str)
+				//有功能的时候进入这里
+				if ( str == "function" ){
+					
+					var buttonID = $(this).attr("id").toString();
+
+					buttonClickWithFunction(buttonID)
+				}else {
+					//如果点击是数字的时候,进入这里
+
+						var buttonID = $(this).attr("id").toString();
+						buttonClickWithNumber(buttonID)
+				}
+
+
+
+			});
+
+			//前面那个数字
+			var headerNumber = null;
+			//后面那个数字
+			var fooderNumber = null;
+			//记录第一次生成的结果
+			var relsult = null;
+
+
+			function buttonClickWithNumber(buttonID){
+
+					var num = buttonID.substr(6,1)
+
+					if (headerNumber == null) {
+						headerNumber = num;
+					}else (fooderNumber == null){
+						fooderNumber = num;
+					}
+
+					return num;
+					
+			}
+			//str 
+		function buttonClickWithFunction(buttonID){
+
+				switch (buttonID) {
+					case 'functionAdd':
+						
+						console.log("加");
+						break;
+					case 'functionSub':
+						
+						console.log('减');
+						break;
+					case 'functionMul':
+						
+						console.log('乘');
+						break;
+					case 'functionDiv':
+						
+						console.log('除');
+						break;
+					case 'functionRes':
+						console.log('结果');
+						break;
+					default:
+						console.log("bu zhi xing");
+						break;
+				}
+
+		}
+
+		
+
+
+
+
+
+		</script>
+	</body>
+</html>
